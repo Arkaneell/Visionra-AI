@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "entrepreneurship-agent"
+version = "0.1.0"
+description = "Modular AI agent for founders and startup teams"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain>=0.2.0",
+    "langchain-groq>=0.1.0",
+    "langgraph>=0.1.0",
+    "groq>=0.9.0",
+    "pydantic-settings>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0", "pytest-asyncio>=0.23.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agent*", "tools*", "prompts*", "llm*", "config*", "memory*", "utils*"]
